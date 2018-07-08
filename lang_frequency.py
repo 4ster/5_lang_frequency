@@ -29,7 +29,7 @@ def create_parser(top_count = 10):
     return args
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     top_count = 10
     args = create_parser(top_count)
     text_loaded = load_data(args.filepath)
