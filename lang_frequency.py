@@ -9,13 +9,13 @@ def load_data(filepath):
     return text
 
 
-def get_most_frequent_words(text, top_count = 10):
+def get_most_frequent_words(text, top_count=10):
     words = re.findall(r"\b[^\W\d]+\b", text.lower())
     words_counter = Counter(words)
     return words_counter.most_common(top_count)
 
 
-def create_parser(top_count = 10):
+def create_parser(top_count=10):
     parser = argparse.ArgumentParser(
         description="Prints top {0} words with it's frequencies from text file.".format(top_count))
     parser.add_argument(
