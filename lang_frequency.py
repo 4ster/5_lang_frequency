@@ -4,9 +4,12 @@ import re
 
 
 def load_data(filepath):
-    with open(filepath) as textfile:
-        text = textfile.read()
-    return text
+    try:
+        with open(filepath) as textfile:
+            text = textfile.read()
+    except FileNotFoundError as e:
+        return None, e
+    return text,None
 
 
 def get_most_frequent_words(text, top_count=10):
@@ -31,7 +34,9 @@ def create_parser(top_count=10):
 if __name__ == "__main__":
     top_count = 10
     args = create_parser(top_count)
-    text_loaded = load_data(args.filepath)
+    text_loaded, err = load_data(args.filepath)
+    if err is not None:
+        exit(err)
     most_frequent_words = get_most_frequent_words(text_loaded, top_count)
     print("\n".join(["'{0}': {1}".format(word, count)
                      for word, count in most_frequent_words]))
