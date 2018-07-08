@@ -1,6 +1,6 @@
 import argparse
 from collections import Counter
-import string
+import re
 
 
 def load_data(filepath):
@@ -10,8 +10,7 @@ def load_data(filepath):
 
 
 def get_most_frequent_words(text, top_count = 10):
-    words = text.split()
-    words = [w for w in words if not (w in string.punctuation)]
+    words = re.compile("\\b[^\W\d]+\\b", re.I).findall(text)
     words_counter = Counter(words)
     return words_counter.most_common(top_count)
 
