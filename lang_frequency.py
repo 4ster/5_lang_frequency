@@ -7,9 +7,9 @@ def load_data(filepath):
     try:
         with open(filepath) as textfile:
             text = textfile.read()
+        return text, None
     except FileNotFoundError as e:
         return None, e
-    return text,None
 
 
 def get_most_frequent_words(text, top_count=10):
