@@ -35,5 +35,5 @@ if __name__ == '__main__':
     args = create_parser(top_count)
     text_loaded = load_data(args.filepath)
     most_frequent_words = get_most_frequent_words(text_loaded, top_count)
-    print("\n".join(["'{0}': {1}".format(x[0], x[1])
-                     for x in most_frequent_words]))
+    print("\n".join(["'{0}': {1}".format(word, count)
+                     for word, count in most_frequent_words]))
